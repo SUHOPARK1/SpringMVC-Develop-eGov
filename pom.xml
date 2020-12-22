@@ -219,8 +219,14 @@
 		    <version>${lombok-version}</version>
 		    <scope>provided</scope>
 		</dependency>
-	
-		<!-- Jackson -->
+		<!-- Test -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.7</version>
+			<scope>test</scope>
+		</dependency>  
+		<!-- Jackson -->     
 		<dependency>
 		    <groupId>com.fasterxml.jackson.core</groupId>
 		    <artifactId>jackson-core</artifactId>
