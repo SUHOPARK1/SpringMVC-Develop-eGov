@@ -1,10 +1,16 @@
 'use strict'
-$('#home').click(e => { location.href = '/'})
-        $('#facebook').click(e => {location.href = '/transfer/sym/mgr/index'})
-        $('#signupbtn').click(e => {
+var manager = manager || {}
+manager = (()=>{
+	let _
+	const init =()=>{
+		_ = localStorage.getItem("ctx")
+		siginup()
+	}
+	const siginup =()=>{
+		$('#signupbtn').click(e => {
             e.preventDefault()
             $.ajax({
-                url: `/managers`,
+                url: `${_}/managers`,
                 type: 'POST',
                 data: JSON.stringify({
                     email: $('#email').val(),
@@ -21,3 +27,12 @@ $('#home').click(e => { location.href = '/'})
                 }
             })
         })
+	}
+	return {init}
+})()
+
+
+
+$('#home').click(e => { location.href = '/'})
+        $('#facebook').click(e => {location.href = '/transfer/sym/mgr/index'})
+        

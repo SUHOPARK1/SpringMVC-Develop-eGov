@@ -22,5 +22,6 @@
 	<definition name="content:*/*" extends="public">
 	    <put-attribute name="container" value="/WEB-INF/views/cop/{1}/{2}.jsp"/>
 	</definition>
+	
  
 </tiles-definitions>

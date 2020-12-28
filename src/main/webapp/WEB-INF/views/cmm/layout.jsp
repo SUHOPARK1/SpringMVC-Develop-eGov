@@ -11,6 +11,7 @@
 table{1px solid black; width: 80%; margin: 0 auto}
 table tr {1px solid black}
 table tr td{1px solid black}
+
 </style>
 <body>
 <table>
@@ -38,7 +39,8 @@ table tr td{1px solid black}
 	<tr>
 		<td>
 			<footer id="layout-footer">
-				<tiles:insertAttribute name="footer"/>				
+				<tiles:insertAttribute name="footer"/>
+				
 			</footer>
 		</td>
 	</tr>

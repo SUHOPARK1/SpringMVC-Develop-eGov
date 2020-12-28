@@ -29,11 +29,11 @@
 	<jsp:include page="cmm/features.jsp"/>
     <jsp:include page="cmm/clients.jsp"/>
 	<jsp:include page="cmm/footer.jsp"/>
+  
+    <script	>
     
-    <script>
-    
-    cmm.init(`${ctx}`)
-      
+   common.init(`${ctx}`) 
+   
     </script>
 </body>
 </html>

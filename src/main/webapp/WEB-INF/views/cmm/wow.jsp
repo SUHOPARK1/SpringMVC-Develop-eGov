@@ -8,7 +8,7 @@
 
 <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="300ms">
      <div class="single-service">
-         <div id= "icon1" class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="300ms">
+         <div id="icon1" class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="300ms">
              <img src="${cmm}/images/home/icon1.png" alt="">
          </div>
          <h2>Incredibly Responsive</h2>
@@ -17,7 +17,7 @@
  </div>
  <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="600ms">
      <div class="single-service">
-         <div id = "icon2" class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="600ms">
+         <div id="icon2" class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="600ms">
              <img src="${cmm}/images/home/icon2.png" alt="">
          </div>
          <h2>Superior Typography</h2>
@@ -37,6 +37,3 @@
         </div>
     </section>
     
-<script>
-wow.init()
-</script>
