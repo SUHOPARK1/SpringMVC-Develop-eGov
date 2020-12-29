@@ -1,12 +1,21 @@
 package com.example.demo.sym.service;
 
-import com.example.demo.sym.service.model.Manager;
+import com.example.demo.sym.service.ManagerService;
 
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-@Component
-public interface ManagerService {
+@Service
+public class ManagerService {
+	
+	@Autowired ManagerMapper managerMapper;
 
-    public int register(Manager manager);
+    
+    public int register(Manager manager) {
+    	System.out.println("========== 1 ==========");
+    	int a = 1;
+    	System.out.println("========== 2 =========="+a);
+        return a;
+    }
 
 }

@@ -1,6 +1,4 @@
-package com.example.demo.cmm.mpr;
-
-import com.example.demo.sym.service.model.Manager;
+package com.example.demo.sym.service;
 
 import org.springframework.stereotype.Repository;
 
