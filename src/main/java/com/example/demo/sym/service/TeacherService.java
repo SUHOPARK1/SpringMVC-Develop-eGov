@@ -1,8 +1,8 @@
 package com.example.demo.sym.service;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
-public interface TeacherService {
+@Service
+public class TeacherService {
 
 }
