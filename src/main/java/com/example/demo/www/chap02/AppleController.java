@@ -11,6 +11,7 @@ import static java.util.Comparator.comparing;
 
 import lombok.Data;
 
+// 예제
 @Data class Apple{
 	private int weight; private Color color; 
 	public Apple(int weight, Color color){this.weight = weight;this.color = color; }
