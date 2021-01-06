@@ -1,15 +1,17 @@
 package com.example.demo.uss.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.cmm.enm.Sql;
 import com.example.demo.cmm.utl.DummyGenerator;
 
 @Service
 public class StudentService{
-	@Autowired DummyGenerator gen;
+	@Autowired DummyGenerator dummy;
     @Autowired
     StudentMapper studentMapper;
 
@@ -19,7 +21,7 @@ public class StudentService{
     
     public void insertMany(int count) {
     	for(int i = 0; i <count; i++) {
-    		studentMapper.insert(null);
+    		studentMapper.insert(dummy.makeStudent());
     	}
     }
 
@@ -42,5 +44,12 @@ public class StudentService{
     public int delete(Student s) {
         return studentMapper.delete(s);
     }
+    public void truncate() {
+    	var map = new HashMap<String, String>();
+    	map.put("TRUNCATE_STUDENTS", Sql.TRUNCATE_STUDENTS.toString());
+    	studentMapper.truncate(map);
+    }
     
 }
+
+

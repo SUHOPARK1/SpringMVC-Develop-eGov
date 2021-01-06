@@ -10,11 +10,12 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
+import com.example.demo.cmm.enm.Path;
 import com.example.demo.sym.service.Manager;
 import com.example.demo.sym.service.Teacher;
 import com.example.demo.uss.service.Student;
 
-@Service("gen")
+@Service("dummy")
 public class DummyGenerator {
 	
 		// 람다로 바꾸는 과정 - 연습중...		
@@ -136,14 +137,14 @@ public class DummyGenerator {
 		 return makeUserid()+ls.get(0);
 	 }
 	 public Manager makeManeger() {
-		 return new Manager("",makeEmail(), "1");
+		 return new Manager("",makeEmail(), "1",  makeUserName(), Path.DEFALUT_PORFILE.toString());
 	 }
 	 public Teacher makeTeacher() {
 		 return new Teacher("",
 				 makeUserName(),
 				 "1",
 				 makeSubject(),
-				 "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiuZGp08DDSD0P3PMfKSbbPu2nVmJdH74gHg&usqp=CAU"
+				 Path.DEFALUT_PORFILE.toString()
 				 );
 	 }
 	 public Student makeStudent() {
@@ -153,7 +154,7 @@ public class DummyGenerator {
 				 makeBirthday(),
 				 makeGender(),
 				 makeRegdate(),
-				 "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiuZGp08DDSD0P3PMfKSbbPu2nVmJdH74gHg&usqp=CAU", 
+				 Path.DEFALUT_PORFILE.toString(), 
 				 makeSubject());
 	 }
 	 
