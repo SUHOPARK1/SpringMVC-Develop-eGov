@@ -8,6 +8,13 @@ import java.util.List;
 import java.util.function.BiFunction;
 import java.util.stream.Collectors;
 
+import org.springframework.stereotype.Service;
+
+import com.example.demo.sym.service.Manager;
+import com.example.demo.sym.service.Teacher;
+import com.example.demo.uss.service.Student;
+
+@Service("gen")
 public class DummyGenerator {
 	
 		// 람다로 바꾸는 과정 - 연습중...		
@@ -27,8 +34,8 @@ public class DummyGenerator {
 	 * 그 외의 나머지 연도는 평년이다.
 	 */
 	 public String makeBirthday() {
-		 int year = rangeRandom.apply(1970, 2000);		 
-		 int month = rangeRandom.apply(1,13);
+		 int year = random.apply(1970, 2000);		 
+		 int month = random.apply(1,13);
 		 int date = 0;
 		 switch(month) {
 		 case 2: date = ((year % 4 == 0 && year % 100 != 0 ) || year % 400 == 0) ? 29 : 28;
@@ -37,6 +44,18 @@ public class DummyGenerator {
 		 }		 
 		 return year + "-" + month + "-" + date;
 	 }
+	 public String makeRegdate() {
+		 int year = random.apply(2019, 2020);		 
+		 int month = random.apply(1,13);
+		 int date = 0;
+		 switch(month) {
+		 case 2: date = ((year % 4 == 0 && year % 100 != 0 ) || year % 400 == 0) ? 29 : 28;
+		 case 1: case 3: case 5: case 7: case 8: case 10: case 12: date = 31;
+		 case 4: case 6: case 9: case 11: date = 30;
+		 }		 
+		 return year + "-" + month + "-" + date;
+	 }
+	 
 	 
 	 /*
 	  * 랜덤으로 성별 생성하기
@@ -53,17 +72,19 @@ public class DummyGenerator {
 	  * a~z 0~9
 	  */
 	 public String makeUserid() {
-		 String text = ""; 
-		 String ran = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-		 return text;
+		 List<String> ls = Arrays.asList(
+				 "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".split(""));
+		 Collections.shuffle(ls);
+		 return ls.get(0)+ls.get(0)+ls.get(0)+ls.get(0);
 	 }
 	 
 	 /*
 	  *랜덤으로 전화번호 생성하기
 	  */
-	 public String makePhoneNumber() {
-		 return "";
-	 }
+	 public String makePhoneNumber() {		 	 
+	     return "010-"+random.apply(1000,10000)+"-"+random.apply(1000,10000);
+	 }		
+		 	 	
 	 
 	 /*
 	  *랜덤으로 이름 생성하기
@@ -104,6 +125,38 @@ public class DummyGenerator {
 				 .get(0);
 		 return fname.get(0)+a[0]+a[1];
 	 }
+	 public String makeSubject() {
+		 List<String> ls = Arrays.asList("Java", "Spring", "Python","jQuery","eGovframe");
+		 Collections.shuffle(ls);
+		 return ls.get(0);
+	 }
+	 public String makeEmail() {
+		 List<String> ls = Arrays.asList("@test.com","@gamil.com","@naver.com");
+		 Collections.shuffle(ls);
+		 return makeUserid()+ls.get(0);
+	 }
+	 public Manager makeManeger() {
+		 return new Manager("",makeEmail(), "1");
+	 }
+	 public Teacher makeTeacher() {
+		 return new Teacher("",
+				 makeUserName(),
+				 "1",
+				 makeSubject(),
+				 "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiuZGp08DDSD0P3PMfKSbbPu2nVmJdH74gHg&usqp=CAU"
+				 );
+	 }
+	 public Student makeStudent() {
+		 return new Student(makeUserid(), 
+				 "1", 
+				 makeUserName(), 
+				 makeBirthday(),
+				 makeGender(),
+				 makeRegdate(),
+				 "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiuZGp08DDSD0P3PMfKSbbPu2nVmJdH74gHg&usqp=CAU", 
+				 makeSubject());
+	 }
+	 
 }
 
 
