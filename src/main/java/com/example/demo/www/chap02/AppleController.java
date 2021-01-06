@@ -9,8 +9,7 @@ import static java.util.Comparator.comparing;
 import static com.example.demo.cmm.utl.Util.*;
 import lombok.Data;
 
-public class AppleController {	
-	@SuppressWarnings("deprecation")
+public class AppleController{	
 	public static void main(String... args) {
 		AppleService as = new AppleService();
 		List<Apple> ls = Arrays.asList(
@@ -19,6 +18,9 @@ public class AppleController {
 						new Apple(100, Color.RED),
 						new Apple(110, Color.RED),
 						new Apple(120, Color.RED)});
+		
+		// 명령형
+			
 		print.accept("1. 녹색사과 필터링 결과");
 		for(Apple a : as.filterApples(ls, as::isGreenApple)) print.accept(a.toString());
 		for(Apple a : as.filterApples(ls, (Apple a) -> a.getColor().equals(Color.GREEN) )) 
@@ -30,7 +32,7 @@ public class AppleController {
 		print.accept("3. 빨간사과 필터링 결과 ... 단, 색깔은 외부주입");
 		for(Apple a : as.filterApplesByColor(ls, Color.RED)) print.accept(a.toString());
 		print.accept("4. 120그램이상 사과 필터링 결과 ... 단, 무게는 외부주입");
-		for(Apple a : as.filterApplesByWeight(ls, 120)) print.accept(a.toString());
+		for(Apple a : as.filterApplesByWeight(ls, 120))print.accept(a.toString());
 		print.accept("5. 100그램 이상 빨간 사과 필터링 결과");
 		for(Apple a : as.filterApples(ls, (Apple a) -> a.getWeight() > 100  
 				&& a.getColor().equals(Color.RED)))

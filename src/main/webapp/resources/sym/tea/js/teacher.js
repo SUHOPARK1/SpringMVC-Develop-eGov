@@ -1,5 +1,15 @@
 'use strict'
-
+/*
+var teacher = teacher || {}
+teacher = (()=>{
+	const init = ctx => {
+		const _= ctx
+	}
+	login = ()=>{
+		
+	}
+	return {init}
+}) ()
 
 
 
@@ -79,6 +89,6 @@ $.getJSON(`/teachers/${teaNum}`, d => {
 		})
 	})						 
 }) // getJSON 의 scope
-
+*/
 
 

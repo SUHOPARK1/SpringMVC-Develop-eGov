@@ -34,7 +34,7 @@ common = (()=>{
 			})
 		})
 		let mgr_arr = [{id:'sign-up', val: '관리자등록', url:`${ctx}/admin/mgr/register`}, 
-		{id:'sign-in', val: '관리자접속',url:`${ctx}/admin/mgr/access`},
+		{id:'sign-in', val:'관리자접속',url:`${ctx}/admin/mgr/access`},
 		{id:'c', val: 'c'},
 		{id:'d', val: 'd'},
 		{id:'e', val: 'e'}]
@@ -66,9 +66,9 @@ common = (()=>{
 			})
 		})				
 	}
-	
 	const goHome = () => {
-		$(`#goHome`).click(e => {location.href = ` ${localStorage.getItem('ctx')}/`})
+		$(`#goHome`).click(e => {
+			location.href = `${localStorage.getItem('ctx')}/`})
 	}
 	return {init, goHome}
 })()

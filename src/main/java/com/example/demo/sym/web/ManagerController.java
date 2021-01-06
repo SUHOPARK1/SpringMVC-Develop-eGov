@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.cmm.enm.Messenger;
 import com.example.demo.sym.service.Manager;
+import com.example.demo.sym.service.ManagerMapper;
 import com.example.demo.sym.service.ManagerService;
 
 import org.slf4j.Logger;
@@ -19,11 +20,18 @@ public class ManagerController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     
     @Autowired ManagerService managerService;
+    @Autowired ManagerMapper managerMapper;
     
     @PostMapping("")
     public Messenger register(@RequestBody Manager manager) {
         return (managerService.register(manager) == 1) 
         		? Messenger.SUCCESS 
         		: Messenger.FAILURE;
+    }
+    
+    @PostMapping("/access")
+    public Manager access(@RequestBody Manager manager) {
+    	System.out.println("MGR ACCESS ============");
+    	return managerMapper.access(manager);
     }
 }

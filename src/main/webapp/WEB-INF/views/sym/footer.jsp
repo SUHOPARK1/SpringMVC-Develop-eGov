@@ -1,3 +1,4 @@
+  
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
@@ -12,3 +13,8 @@
          </div>
      </div>       
  </section>
+     <script	>
+common.init(`${ctx}`) 
+manager.init(`${ctx}`)
+teacher.init(`${ctx}`)
+    </script>
