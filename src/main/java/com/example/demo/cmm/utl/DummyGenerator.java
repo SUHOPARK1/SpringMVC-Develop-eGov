@@ -76,7 +76,7 @@ public class DummyGenerator {
 		 List<String> ls = Arrays.asList(
 				 "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".split(""));
 		 Collections.shuffle(ls);
-		 return ls.get(0)+ls.get(0)+ls.get(0)+ls.get(0);
+		 return ls.get(0)+ls.get(1)+ls.get(2)+ls.get(3);
 	 }
 	 
 	 /*
@@ -148,14 +148,14 @@ public class DummyGenerator {
 				 );
 	 }
 	 public Student makeStudent() {
-		 return new Student(makeUserid(), 
+		 return new Student("",makeUserid(), 
 				 "1", 
 				 makeUserName(), 
 				 makeBirthday(),
-				 makeGender(),
 				 makeRegdate(),
+				 makeSubject(),
 				 Path.DEFALUT_PORFILE.toString(), 
-				 makeSubject());
+		 		 makeGender());
 	 }
 	 
 }
