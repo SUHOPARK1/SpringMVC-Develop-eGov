@@ -2,18 +2,18 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 <!DOCTYPE html>
 <html>
-<jsp:include page="cmm/head.jsp"/>
+<head>
+<tiles:insertAttribute name="head"/> 
+</head>
 <body>
 
-<jsp:include page="cmm/navbar.jsp"/>
-<h1>The article and footer elements + CSS</h1>
+<article id="layout-container" style="margin-top: 100px">
+	<tiles:insertAttribute name="container"/>
+</article>
 
-<jsp:include page="cmm/container.jsp"/>
 
-<jsp:include page="cmm/footer.jsp"/>
-<script>
-</script>
 </body>
 </html>

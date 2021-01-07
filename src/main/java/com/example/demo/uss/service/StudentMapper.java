@@ -19,7 +19,9 @@ public interface StudentMapper {
 	public int update(Student s);
 
 	public int delete(Student s);
-	
+
 	public void truncate(HashMap<String, String> map);
+
+	public int count(HashMap<String, String> map);
     
 }

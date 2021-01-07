@@ -6,7 +6,7 @@
 <div id="pricing" class="container-fluid">
   <div class="text-center">
     <h2>사용자 등록</h2>
-    <h4>Choose a payment plan that works for you</h4>
+    <h4>사용자를 등록해 주세여</h4>
   </div>
   <div class="row slideanim">
     <div class="col-sm-4 col-xs-12">
@@ -62,9 +62,15 @@
         <div class="panel-footer">
           <h3>$49</h3>
           <h4>per month</h4>
-          <button class="btn btn-lg">Sign Up</button>
+          <button id = "mgr-join-btn" class="btn btn-lg">Sign Up</button>
+          <button id = "mgr-login-btn" class="btn btn-lg">Sign In</button>
         </div>
       </div>      
     </div>    
   </div>
 </div>
+<script>
+$(`#mgr-login-btn`).click(function(){
+	location.href = `${ctx}/admin/mgr/access`
+})
+</script>
