@@ -34,30 +34,31 @@ public class DummyGenerator {
 	 * || 400으로 나눈 값이 0인 것은 윤년으로 포함된다. 
 	 * 그 외의 나머지 연도는 평년이다.
 	 */
+	
 	 public String makeBirthday() {
 		 int year = random.apply(1970, 2000);		 
 		 int month = random.apply(1,13);
 		 int date = 0;
 		 switch(month) {
-		 case 2: date = ((year % 4 == 0 && year % 100 != 0 ) || year % 400 == 0) ? 29 : 28;
-		 case 1: case 3: case 5: case 7: case 8: case 10: case 12: date = 31;
-		 case 4: case 6: case 9: case 11: date = 30;
-		 }		 
-		 return year + "-" + month + "-" + date;
+		 case 2: date = ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) ? 
+				 random.apply(1, 30) : random.apply(1, 29) ; break;
+		 case 4: case  6: case  9: case  11: date = random.apply(1, 31);	break;
+		 default: date = random.apply(1, 32); break;
+		 }
+		 return year+"-"+month+"-"+date;
 	 }
 	 public String makeRegdate() {
 		 int year = random.apply(2019, 2020);		 
 		 int month = random.apply(1,13);
 		 int date = 0;
 		 switch(month) {
-		 case 2: date = ((year % 4 == 0 && year % 100 != 0 ) || year % 400 == 0) ? 29 : 28;
-		 case 1: case 3: case 5: case 7: case 8: case 10: case 12: date = 31;
-		 case 4: case 6: case 9: case 11: date = 30;
+		 case 2: date = ((year % 4 == 0 && year % 100 != 0 ) || year % 400 == 0) ? 29 : 28; break;
+		 case 1: case 3: case 5: case 7: case 8: case 10: case 12: date = 31; break;
+		 case 4: case 6: case 9: case 11: date = 30; break;
 		 }		 
 		 return year + "-" + month + "-" + date;
 	 }
-	 
-	 
+	 	 
 	 /*
 	  * 랜덤으로 성별 생성하기
 	  * "M" - male, "F" - female
