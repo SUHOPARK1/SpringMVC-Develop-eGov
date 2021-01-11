@@ -10,7 +10,7 @@ stu.count = x => {
 	$.getJSON(`${x}/students/count`, 
 			d => { $(`#stu-count`).text(d)})}
 stu.list = x => {	
-	$.getJSON(`${x}/students`, d => { 
+	$.getJSON(`${x.ctx}/students/page/${x.pageSize}/${x.pageNum}`, d => { 
 		$(`<h3/>`)
 		.attr({id: `title`})
 		.text(`학생목록`)
@@ -20,13 +20,15 @@ stu.list = x => {
 		.css({width: `100%`})
 		.appendTo(`#title`) 
 		$(`<tr/>`).attr({id: `tr_1`}).appendTo(`#tab`)
-		const arr = [`No`,`아이디`,`이름`,`생년월일`,`성별`,`등록일`,`전공과목`]
-		$.each(arr, function(i,j){
-			$(`<th>${j}</th>`).css({backgroundColor: `lightblue`})
+		$.each(
+			[`No`,`아이디`,`이름`,`생년월일`,`성별`,`등록일`,`전공과목`], 
+			(i,j) => {
+			$(`<th>${j}</th>`).css({backgroundColor: `gray`})
 			.appendTo(`#tr_1`)
 		})
-		$.each(d, (i, j) => {
-			$(`<tr><td>${j.stuNum}</td>
+		$.each(d.list, 
+			(i, j) => {
+					$(`<tr><td>${j.stuNum}</td>
 		   	    		<td>${j.userid}</td>
 		   	    		<td>${j.name}</td>
 						<td>${j.birthday}</td>
@@ -40,17 +42,56 @@ stu.list = x => {
 		.attr({id: `stu_page`})
 		.addClass(`pagination`)
 		.appendTo(`#mgr-data-mgt-stu`)
-		const arr2 = [`<<`, `1`, `2`, `3`, `4`, `5`, `6`, `>>`]
-		$.each(arr2, (i, j) => {
+		const page = d.page
+		/*function* range(start, end) {
+			for (let i = start; i <= end; i++) {
+		        yield i;
+		    }
+		} 아래 형태는 for 가 배재된 재귀함수 */
+		function* range(start, end) {
+		    yield start;
+		    if (start === end) return;
+		    yield* range(start + 1, end);
+		}
+		
+		if(page.existPrev){
 			$(`<a/>`)
 			.attr({href: `#`})
-			.text(`${j}`)
+			.text(`<<`)
+			.css({backgroundColor: `gray`})
 			.appendTo(`#stu_page`)
 			.click(e=>{
 				e.preventDefault()
-				alert(j)
+				$(`#mgr-data-mgt-stu`).empty()
+				stu.list({ctx: x.ctx, pageSize: `10`, pageNum: page.prevBlock})
 			})
+		}
+		$.each(
+			[...range(page.startPage, page.endPage)] ,
+			 (i, j) => {
+				$(`<a/>`)
+					.attr({href: `#`})
+					.css({backgroundColor: (j != page.pageNum) ? `gray` : `yellow`})
+					.text(`${j}`)
+					.appendTo(`#stu_page`)
+					.click(e=>{
+						e.preventDefault()
+						$(`#mgr-data-mgt-stu`).empty()
+						stu.list({ctx: x.ctx, pageSize: `10`, pageNum: j})
+					})
 		})
+		if(page.existNext){
+			$(`<a/>`)
+			.attr({href: `#`})
+			.css({backgroundColor: `gray`})
+			.text(`>>`)
+			.appendTo(`#stu_page`)
+			.click(e=>{
+				e.preventDefault()
+				$(`#mgr-data-mgt-stu`).empty()
+				stu.list({ctx: x.ctx, pageSize: `10`, pageNum: page.nextBlock})
+			})
+		}
 	})
 }
 
@@ -87,6 +128,7 @@ $.getJSON(`/students/${userid2}`, d => {
 	$('#profileImage').html(`<img src="${d.profileImage}" alt="${d.name}" class="img-fluid rounded-circle mb-2" width="128" height="128" />
 							<h5 class="card-title mb-0">${d.name}</h5>
 							<div class="text-muted mb-2">Lead Developer</div>
+
 							<div>
 								<a class="btn btn-primary btn-sm" href="#">Follow</a>
 								<a class="btn btn-primary btn-sm" href="#"><span data-feather="message-square"></span> Message</a>
@@ -98,10 +140,12 @@ $.getJSON(`/students/${userid2}`, d => {
 	$(`#about`).html(`<h5 class="h6 card-title">About</h5>
 							<ul class="list-unstyled mb-0">
 								<li class="mb-1"><span data-feather="home" class="feather-sm mr-1"></span> 학생번호 : <a href="#">${d.stuNum}</a></li>
+
 								<li class="mb-1"><span data-feather="briefcase" class="feather-sm mr-1"></span> 생년월일 : <a href="#">${d.ssn}</a></li>
 								<li class="mb-1"><span data-feather="map-pin" class="feather-sm mr-1"></span> 주소 : <a href="#">서울</a></li>
 							</ul>`)
 })
+
 $('#signupbtn').click(e => {
             e.preventDefault()
             $.ajax({
@@ -126,11 +170,13 @@ $('#signupbtn').click(e => {
                 }
             })
         })
+
 const userid = sessionStorage.getItem('userid')
 		$.getJSON(`/students/${userid}`, d => {
 			$('#profileImage').html(`<img src="${d.profileImage}" alt="${d.name}" class="img-fluid rounded-circle mb-2" width="128" height="128" />
 									<h5 class="card-title mb-0">${d.name}</h5>
 									<div class="text-muted mb-2">Lead Developer</div>
+
 									<div>
 										<a class="btn btn-primary btn-sm" href="#">Follow</a>
 										<a class="btn btn-primary btn-sm" href="#"><span data-feather="message-square"></span> Message</a>
@@ -142,6 +188,7 @@ const userid = sessionStorage.getItem('userid')
 			$(`#about`).html(`<h5 class="h6 card-title">About</h5>
 									<ul class="list-unstyled mb-0">
 										<li class="mb-1"><span data-feather="home" class="feather-sm mr-1"></span> 학생번호 : <a href="#">${d.stuNum}</a></li>
+
 										<li class="mb-1"><span data-feather="briefcase" class="feather-sm mr-1"></span> 생년월일 : <a href="#">${d.ssn}</a></li>
 										<li class="mb-1"><span data-feather="map-pin" class="feather-sm mr-1"></span> 주소 : <a href="#">서울</a></li>
 									</ul>`)

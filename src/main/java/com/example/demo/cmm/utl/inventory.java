@@ -7,20 +7,19 @@ import org.springframework.stereotype.Component;
 
 /*
 리스트 형식의 추상화: Generic
-커스텀 List<T> 를 제작하여 사용함  
+커스텀 List<T> 를 제작하여 사용함
 p.82 참조
 메소드 목록 : https://www.javatpoint.com/java-arraylist
- */
+ * */
 @Component("ls") @Lazy
-public class inventory<T> {
+public class Inventory<T> {
 	private ArrayList<T> inventory;
-	public inventory() {inventory = new ArrayList<T>();}
+	public Inventory() {inventory = new ArrayList<T>();}
 	public void add(T t) {inventory.add(t);}
 	public T get(int i) {return inventory.get(i);}
 	public ArrayList<T> get(){return inventory;}
 	// set
 	public void clear() {inventory.clear();}
 	public int size() {return inventory.size();}
-	
 }
 

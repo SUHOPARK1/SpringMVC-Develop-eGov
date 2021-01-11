@@ -20,7 +20,10 @@ public class AppleController{
 						new Apple(120, Color.RED)});
 		
 		// 명령형
-			
+		
+		
+		
+		
 		print.accept("1. 녹색사과 필터링 결과");
 		for(Apple a : as.filterApples(ls, as::isGreenApple)) print.accept(a.toString());
 		for(Apple a : as.filterApples(ls, (Apple a) -> a.getColor().equals(Color.GREEN) )) 
@@ -110,3 +113,8 @@ class AppleService {
 	boolean isGreenApple(Apple apple) {return Color.GREEN.equals(apple.getColor());}
 	
 }
+
+	
+
+
+

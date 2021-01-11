@@ -38,7 +38,13 @@ public class BuildingStreamsService {
 		        .flatMap(line -> Arrays.stream(line.split(" ")))
 		        .distinct()
 		        .count();
+
 	}
 	*/
 	
 }
+
+
+
+
+

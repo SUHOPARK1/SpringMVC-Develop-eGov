@@ -71,6 +71,7 @@ public class HomeController {
         logger.info("이동 파일: " + page);
         return String.format("content:%s/%s", dir, page);
     }
-}
+
   
 	
+}
