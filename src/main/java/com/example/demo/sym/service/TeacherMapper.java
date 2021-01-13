@@ -8,6 +8,8 @@ import com.example.demo.sts.service.Grade;
 
 @Repository
 public interface TeacherMapper {
+	public int insertMany(List<Teacher>list);
+	public Teacher access(Teacher teacher);
+	public int insert(Teacher teacher);
 	
-	public int insertMany(List<Teacher>map);
 }
