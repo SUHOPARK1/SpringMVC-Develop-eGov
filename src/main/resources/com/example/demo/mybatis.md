@@ -9,8 +9,9 @@ if
 <select id="find" 
 	parameterType="com.gms.web.Command"
 	resultType="com.gms.web.Domain"> 
+
 	SELECT * FROM BLOG 
-    WHERE state = 'ACTIVE' 
+    WHERE state = ‘ACTIVE’ 
   <if test="title != null">
     AND title like '%${name}%'
   </if>
@@ -20,8 +21,8 @@ if
 </select>
 
 <select id="findActiveBlogLike" resultType="Blog">
-
-  SELECT * FROM BLOG WHERE state = 'ACTIVE'
+     
+  SELECT * FROM BLOG WHERE state = ‘ACTIVE’
   <choose>
     <when test="title != null">
       AND title like #{title}

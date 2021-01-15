@@ -14,4 +14,3 @@ import lombok.NoArgsConstructor;
 public class Article {
     private String artNum, title, content, count, writerNum;
 }
-

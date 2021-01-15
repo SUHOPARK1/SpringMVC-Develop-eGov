@@ -49,11 +49,11 @@
 		from teachers
 		where tea_num like #{teaNum} and password like #{password}
 	</select>
-	<select id="selectAll" resultMap="gradeMap" parameterType="map">
+	<select id="selectAll" resultMap="gradeMap" parameterType='map'>
 select
-
-a.*, 
- t.tea_num teaNum,
+ 
+ a.*, 
+ t.tea_num teaNum, 
  t.name teaName,
  t.password teaPassword,
  t.profile_image teaProfileImage
@@ -79,7 +79,7 @@ from grades g
 	join students s on s.stu_num = g.stu_num) a
 	join teachers t on t.sub_num = a.subNum
 	
-where a.examDate LIKE #{examDate} AND a.subNum = #{subNum}
+where a.examDate LIKE #{examDate} AND a.subNum =  #{subNum}
 
 </select>
 </mapper>

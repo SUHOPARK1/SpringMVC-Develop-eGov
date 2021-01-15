@@ -1,5 +1,6 @@
 package com.example.demo.cmm.utl;
-
+import static com.example.demo.cmm.utl.Util.*;
+import static java.util.stream.Collectors.*;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 import lombok.Data;
@@ -49,9 +50,5 @@ public class Pagination {
 		this.existNext = (blockNum + 1) != blockCount;
 		this.nextBlock = startPage + BLOCK_SIZE;
 		this.prevBlock = startPage - BLOCK_SIZE;
-		
-		
-		
-		
 	}
 }

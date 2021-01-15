@@ -14,4 +14,3 @@ import lombok.NoArgsConstructor;
 public class Reply extends Article {
     private String replyNum, content, artNum;
 }
-

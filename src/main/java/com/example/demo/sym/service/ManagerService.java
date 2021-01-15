@@ -1,5 +1,6 @@
 package com.example.demo.sym.service;
-
+import static com.example.demo.cmm.utl.Util.*;
+import static java.util.stream.Collectors.*;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,20 +17,15 @@ public class ManagerService {
     public int register(Manager manager) {
         return managerMapper.insert(manager);
     }
+
 	public int insertMany(int count) {
-    	var list = new ArrayList<Manager>();
-    	Manager m = null;
-    	for(int i = 0; i < count; i ++) {
-    		m = dummy.makeManager();
-    		list.add(m);
-    	}
+		var list = new ArrayList<Manager>();
+		Manager m = null;
+		for(int i=0; i< count; i++) {
+			m = dummy.makeManager();
+			list.add(m);
+		}
 		return managerMapper.insertMany(list);
 	}
 
 }
-
-
-
-
-
-

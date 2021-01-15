@@ -11,6 +11,6 @@
 	${CREATE_TABLE}
 </insert>
 <select id="tableCount" parameterType="map" resultType="int">
-	${TABLE_COUNT}	
+	${TABLE_COUNT}
 </select>
 </mapper>

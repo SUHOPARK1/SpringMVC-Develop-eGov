@@ -22,5 +22,3 @@ public class Grade {
     	this.stuNum = stuNum;
     }
 }
-
-
