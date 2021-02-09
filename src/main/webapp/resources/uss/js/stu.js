@@ -3,11 +3,12 @@ var stu = stu || {}
 stu.insertMany = x => {
 	$.getJSON(`${x}/students/insert-many/${$('#stu-data-count').val()}`, 
 			d => { location.reload();})}
+
 stu.count = x => {
 	$.getJSON(`${x}/students/count`, 
 			d => { $(`#stu-count`).text(d)})}
 stu.list = x => {	
-	$.getJSON(`${x.ctx}/students/page/${x.pageSize}/${x.pageNum}`, d => { 
+	$.getJSON(`${x.ctx}/students/list/${x.pageSize}/${x.pageNum}`, d => { 
 		$(`<h3/>`)
 		.attr({id: `title`})
 		.text(`학생목록`)

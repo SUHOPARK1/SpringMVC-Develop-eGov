@@ -87,9 +87,9 @@ li a:hover:not(.active) {
 <body>
 
 <div>
-	
 	<tiles:insertAttribute name="sidebar"/>
 </div>
+
 
 
 <div style="margin-left:10%;padding:1px 5px;height:1000px;">

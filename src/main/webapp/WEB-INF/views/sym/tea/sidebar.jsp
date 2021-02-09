@@ -10,6 +10,7 @@
 <script>
 $(`#tea-grd-mgt`).click(function(e){
 	e.preventDefault()
+	alert(`>>>>>>>>`)
 	location.href = `${ctx}/tea/grd_mgt`
 })
 </script>

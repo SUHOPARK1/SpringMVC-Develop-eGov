@@ -150,3 +150,8 @@ $(`#mgr-generate-db`).click(function(){cmm.generateDB(`${ctx}`)})
 $(`#grd-register`).click(function(){grd.register_form(`${ctx}`)})
 $(`#mgr-insert-many-stu`).click(function(){ stu.insertMany(`${ctx}`)})
 </script>
+
+
+
+
+
