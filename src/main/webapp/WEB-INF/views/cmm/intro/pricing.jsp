@@ -68,9 +68,9 @@
 </div>
 <script>
 $(`#mgr-login-btn`).click(function(){
-	location.href = `${ctx}/admin/mgr/access`
+	location.href = `${ctx}/admin/mgr/login`
 })
 $(`#tea-login-btn`).click(function(){
-	location.href = `${ctx}/admin/tea/access`
+	location.href = `${ctx}/admin/tea/login`
 })
 </script>
