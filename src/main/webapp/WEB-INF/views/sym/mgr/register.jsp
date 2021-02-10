@@ -1,3 +1,4 @@
+  
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
@@ -73,6 +74,11 @@
         }
       }
   </style>
+<script>
+$(function(){
+	 $('#signupbtn').click(function(){ mgr.register(`${ctx}`)})
+})
+ </script> 
      <section id="coming-soon">        
          <div class="container">
             <div class="row">
@@ -112,7 +118,3 @@
             </div>
         </div>       
     </section>
- 
-  <script>
-  $('#signupbtn').click(function(){ mgr.register(`${ctx}`)})
-  </script>  
