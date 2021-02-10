@@ -32,4 +32,17 @@
 		<put-attribute name="sidebar" value="/WEB-INF/views/sym/tea/sidebar.jsp"/>
 	    <put-attribute name="container" value="/WEB-INF/views/sym/tea/{1}.jsp"/>
 	</definition>
+<!-- No Tiles ("밑 상황에서는 타일즈를 타지 않게 하라") -->
+	<definition name="noTiles" template="/WEB-INF/views/no-layout.jsp">
+	    <put-attribute name="noTemplate" value=""/>
+	</definition>
+	<definition name="*/*.jsp" extends="noTiles">
+	    <put-attribute name="noTemplate" value="/WEB-INF/views/{1}/{2}.jsp"/>
+	</definition>
+	<definition name="*/*/*.jsp" extends="noTiles">
+	    <put-attribute name="noTemplate" value="/WEB-INF/views/{1}/{2}/{3}.jsp"/>
+	</definition>
 </tiles-definitions>
+
+
+

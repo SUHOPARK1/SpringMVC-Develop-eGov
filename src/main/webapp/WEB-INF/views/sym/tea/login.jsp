@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/tags/form" %> 
 <link rel="stylesheet" href="${stu}/css/login.css" />
 <h1 style="width:300px;margin: 0 auto;padding-bottom: 50px;">교강사 접속화면</h1>
 
@@ -13,7 +13,7 @@
 
   <div class="container">
     <label for="uname"><b>교강사번호</b></label>
-    <input type="text" placeholder="Enter Username" id="teaNum" required>
+    <input type="text" placeholder="Enter Username" id="teaNum" >
 
     <label for="psw"><b>비밀번호</b></label>
     <input type="password" placeholder="Enter Password" id="password" required>
@@ -30,5 +30,4 @@
   </div>
   <script>
 $(`#tea-login-btn`).click(function() {tea.access(`${ctx}`)})
-
   </script>
