@@ -1,9 +1,11 @@
 package com.example.demo.sec.controller;
 
+import java.net.http.HttpRequest;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.example.demo.sec.mapper.AuthMapper;
 import com.example.demo.uss.domain.Manager;
@@ -23,17 +26,15 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Scope("session")
 @Controller
+@SessionAttributes({"sessionUser"})
 @RequestMapping("/auth")
 public class AurthController {
 	private final AuthMapper authMapper;
 	
+	//Security AOP-Login = @ModelAttribute, ajax-Login = @RequestBody
 	@PostMapping("/student/login")
-	public Map<?,?> studentLogin(@ModelAttribute Student student){ //Security AOP-Login = @ModelAttribute, ajax-Login = @RequestBody
-		 var map = new HashMap<>();
-	        Student result = authMapper.loginStudent(student);
-	        map.put("message", result!=null?"SUCCESS":"FAILURE");
-	        map.put("sessionUser", result);
-	        return map;
+	public Map<?,?> studentLogin(@ModelAttribute Student student, Model model){ 
+		return null;
 	}
 	@PostMapping("/teacher/login")
 	public Map<?,?> teacherLogin(@ModelAttribute Teacher teacher){
@@ -44,14 +45,16 @@ public class AurthController {
 	        return map;
 	}
 	@PostMapping("/manager/login")
-	public Map<?,?> managerLogin(@ModelAttribute Manager manager){
+	public Map<?,?> managerLogin(@ModelAttribute Manager manager,
+			HttpServletRequest request,
+			Model model){
 		System.out.println("######## managerLogin #########" + manager.toString());
 		
-		 var map = new HashMap<>();
-		 	Manager result = authMapper.loginManager(manager);
-	        map.put("message", result!=null?"SUCCESS":"FAILURE");
-	        map.put("sessionUser", result);
-	        return map;
+			model.addAttribute("sessionUser", manager);
+			HttpSession session = request.getSession();
+			System.out.println("로그인 성공한 세션값: "+session.getAttribute("sessionUser"));
+			
+	        return null;
 	}
 	/* 로그인 화면 요청 */
 	@RequestMapping("/loginView")
